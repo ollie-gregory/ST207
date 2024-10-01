@@ -1,0 +1,33 @@
+---
+title: "Introduction to Databases and Data Modelling"
+author: "Oliver Gregory"
+date: 1 October 2024
+format: 
+  html:
+    page-layout: full
+self-contained: true
+---
+
+# Basic Concepts
+
+## File based approach
+
+## Databases
+
+### What is a database?
+
+### How do we design a database?
+
+## Database management systems
+
+### What is a DBMS?
+
+### Characteristics of a DBMS
+
+### Database Actors
+
+### Three-Schema Architecture
+
+### Modules and interactions
+
+### Architecture of a DBMS
