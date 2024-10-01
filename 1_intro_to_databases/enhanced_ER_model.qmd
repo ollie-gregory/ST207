@@ -1,0 +1,11 @@
+---
+title: "Introduction to Databases and Data Modelling"
+author: "Oliver Gregory"
+date: 1 October 2024
+format: 
+  html:
+    page-layout: full
+self-contained: true
+---
+
+# Enhanced Entity-Relationship (EE-R) mode

@@ -12,11 +12,34 @@ self-contained: true
 
 ## File based approach
 
+A file based approach does not require database software. Instead, each user defines and implements the files needed for a specific application. This approach has several disadvantages:
+
+- Duplicated data.
+- Separation and isolation.
+- Data is physically dependent on the application.
+
 ## Databases
 
 ### What is a database?
 
+Data is a collection of known **facts** that can be recorded and that have implicit meaning.
+
+A database is a collection of **related** and **logically coherent** data, built for a specific purpose.
+
 ### How do we design a database?
+
+#### Simplify and identify
+
+- Subjects and nouns &rarr; <font color="green">relations</font>.
+- Objects &rarr; <font color="purple">attributes/keys</font>.
+- Predicates &rarr; <font color="red">relationships</font>.
+- Numerals &rarr; <font color="blue">cardinalities</font>.
+
+#### Example
+
+A university database for maintaining information about students, courses, and grades. <font color="blue">Each</font> <font color="green">student</font> is <font color="red">referred</font> by their <font color="purple">name</font>, unique <font color="purple">number</font>, <font color="purple">class</font> and <font color="purple">major</font>. <font color="blue">Each</font> <font color="green">course</font> <font color="red">has</font> a <font color="purple">name</font>, a unique <font color="purple">code</font>, the <font color="purple">number of credits or hours</font>, and the <font color="purple">department</font> to which it belongs. <font color="blue">Some</font> <font color="green">courses</font> can <font color="red">have</font> <font color="blue">another</font> course as a <font color="purple">prerequisite</font>. <font color="green">Courses</font> are <font color="red">offered</font> within <font color="green">sections</font>, and <font color="blue">each</font> section <font color="red">contains</font> a <font color="purple">number</font>, the <font color="purple">course number</font>, the <font color="purple">semester</font>, the <font color="purple">year</font> and the <font color="purple">instructor’s name</font>. The <font color="green">students</font> <font color="red">receive</font> a <font color="green">grade report</font> containing <font color="blue">all</font> the <font color="purple">grades</font> they completed across sections.
+
+<img src="../images/example_schema_1.png" width=50% height=auto>
 
 ## Database management systems
 

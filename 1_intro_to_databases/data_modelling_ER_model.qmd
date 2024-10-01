@@ -1,0 +1,55 @@
+---
+title: "Introduction to Databases and Data Modelling"
+author: "Oliver Gregory"
+date: 1 October 2024
+format: 
+  html:
+    page-layout: full
+self-contained: true
+---
+
+# Conceptual data modelling using the Entity-Relationship (E-R) model
+
+## Conceptual modelling
+
+## Main phases of database design
+
+## Notation for conceptual diagrams
+
+## Entities and attributes
+
+## Composite vs simple (atomic) attributes
+
+## Single-valued vs multi-valued attributes
+
+## Stored vs derived attributes
+
+## Null values
+
+## Complex attributes
+
+## Entity types and entity sets
+
+## Representation and key attributes of an entity type
+
+## Value sets (domains) of attributes
+
+## Relationship types and sets
+
+## Relationship degree
+
+## Relationships as attributes
+
+## Role names and recursive relationships
+
+## Cardinality ratios for binary relationships
+
+## Participation constraints and existence dependencies
+
+## Attributes of relationship types
+
+## Weak entity types
+
+## (min, max) notation for conceptual diagrams
+
+## Higher degree (>2) relationships
