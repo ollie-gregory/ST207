@@ -29,7 +29,7 @@ It is important to note that the term database application usually refers to a p
 
 ## Main phases of database design
 
-<img src="../images/database_design_phases_1.png" width=80% height=auto>
+<center><img src="../images/1_database_design_phases.png" width=80% height=auto></center>
 
 - **Requirements collection and analysis**: database designers interview users to understand and document their data requirements from a mini world scenario.
 
@@ -45,13 +45,53 @@ It is important to note that the term database application usually refers to a p
 
 ## Notation for conceptual diagrams
 
+<center><img src="../images/1_diagram_notation.png" width=80% height=auto></center>
+
 ## Entities and attributes
 
-## Composite vs simple (atomic) attributes
+An entity may be an object with physical existence, such as a person, car or a house, or an object with conceptual existence, such as a job, a course or a company.
 
-## Single-valued vs multi-valued attributes
+Each entity has attributes that describe the entity. For example, a person entity may have attributes such as name, address, and date of birth. The attributes that describe an entity become a major part of the data stored in a database.
 
-## Stored vs derived attributes
+Attributes can be of different types: simple versus composite, single-valued versus multivalued, and stored versus derived. There is also a special case of NULL values for a given attribute.
+
+```{mermaid}
+flowchart TD
+    A[Entity - employee] --> B([Name: John Smith])
+    A --> C([Address: 123 Main St])
+    A --> D([Date of Birth: 01/01/1990])
+
+    E[Entity - company] --> F([Name: Sunco Oil])
+    E --> G([HQ: Houston, TX])
+    E --> H([President: John Smith])
+```
+
+### Composite vs simple (atomic) attributes
+
+Composite attributes can be divided into smaller subparts representing more independent attributes with independent meanings. For example, an address attribute can be divided into street, city, county, and post code.
+
+Simple (or atomic) attributes are attributes that are not divisible.
+
+```{mermaid}
+flowchart TD
+  A[Address]
+  A --> C[City]
+  A --> B[Street]
+  A --> D[County]
+  A --> E[Post Code]
+
+  B --> H[Apartment]
+  B --> F[Number]
+  B --> G[Street]
+```
+
+### Single-valued vs multi-valued attributes
+
+Most attributes have a single value for a particular entity (e.g., Age). They are called single-valued.
+
+Multivalued attributes (also referred to as “categorical attributes”) can have a set of values for the same entity. For instance, a Colour attribute for a CAR entity. Cars with one colour have a single value, whereas two-tone cars have two colours and so on. We can also apply lower and upper bounds to constrain the number of values allowed for each entity.
+
+### Stored vs derived attributes
 
 ## Null values
 
