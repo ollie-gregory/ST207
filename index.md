@@ -5,3 +5,4 @@ This is a collection of notes for the course ST207: Statistics for Data Science 
 ## Introduction to Databases and Data Modelling
 
 - [Basic Concepts](1_intro_to_databases/basic_concepts.html)
+- [Conceptual data modelling using the Entity-Relationship (E-R) model](1_intro_to_databases/data_modelling_ER_model.html)
