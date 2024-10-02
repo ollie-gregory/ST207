@@ -49,13 +49,13 @@ A university database for maintaining information about students, courses, and g
 
 #### Schema diagram
 
-<img src="../images/example_schema_1.png" width=50% height=auto>
+<center><img src="../images/1_example_schema.png" width=50% height=auto></center>
 
 Visual representation of the structure and organisation of the database. It shows how the elements relate to each other.
 
 #### Database snapshot
 
-<img src="../images/database_snapshot_1.png" width=50% height=auto>
+<center><img src="../images/1_database_snapshot.png" width=50% height=auto></center>
 
 A static image of the database at a given point in time, capturing the state of the data (or instances).
 
@@ -114,7 +114,7 @@ The metadata is used by the DBMS software and the users to obtain information ab
 
 NoSQL databases do not need to rely on metadata: they can use self-described data (data item + data values).
 
-<img src="../images/metadata_1.png" width=50% height=auto>
+<center><img src="../images/1_metadata.png" width=50% height=auto></center>
 
 #### Program-data independence and data abstraction
 
@@ -128,13 +128,13 @@ A view may be a subset of the database and can contain virtual data that is deri
 
 If a view is accessed frequently by multiple users, it can be stored as a virtual table.
 
---> views image
+<center><img src="../images/1_database_view.png" width=80% height=auto></center>
 
 #### Multiuser transaction processing and data sharing
 
 A multiuser DBMS must allow multiple users to access the database at the same time.
 
-The DBMS must include concurrency control routines to ensure that several users trying to update the same data do so in a controlled manner => support for online transaction processing (OLTP).
+<center>The DBMS must include concurrency control routines to ensure that several users trying to update the same data do so in a controlled manner => support for online transaction processing (OLTP).</center>
 
 The concept of a transaction is a key element for ensuring ACID properties.
 
@@ -191,7 +191,7 @@ Data independence: the capacity to change the schema at one level of the databas
 
 It can be **logical** (changes in the conceptual schema do not affect external views or applications) or **physical** (changes in the internal schema do not affect the conceptual schema).
 
-<img src="../images/three_schema_1.png" width=100% height=auto>
+<center><img src="../images/1_three_schema.png" width=100% height=auto></center>
 
 ### Modules and interactions
 
@@ -205,7 +205,7 @@ It can be **logical** (changes in the conceptual schema do not affect external v
 
 DBMS software is installed on a single computer (e.g. mainframes), which acts as the server. Users access the server through terminals or workstations. (ATM machines, for example).
 
---> imgae here
+<center><img src="../images/1_centralised_architecture.png" width=50% height=auto></center>
 
 #### Client-server architecture
 
