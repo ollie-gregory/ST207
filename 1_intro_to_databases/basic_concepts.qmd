@@ -2,7 +2,7 @@
 title: "Introduction to Databases and Data Modelling"
 author: "Oliver Gregory"
 date: 1 October 2024
-format: 
+format:
   html:
     page-layout: full
 self-contained: true
@@ -24,9 +24,17 @@ A file based approach does not require database software. Instead, each user def
 
 Data is a collection of known **facts** that can be recorded and that have implicit meaning.
 
+  &rdca; No reason to keep data that is not related to what we are doing.
+
 A database is a collection of **related** and **logically coherent** data, built for a specific purpose.
 
 ### How do we design a database?
+
+#### Start with a miniworld description
+
+>A UNIVERSITY database for maintaining information about students, courses, and grades. Each student is referred by their name, unique number, class and major. Each course has a name, a unique code, the number of credits or hours, and the department to which it belongs. Some courses can have another course as a prerequisite. Courses are offered within sections, and each section contains a number, the course number, the semester, the year and the instructor’s name. The students receive a grade report containing all the grades they completed across sections.
+
+This is a high-level conceptual model where you identify the main entities, relationships, rules and constraints.
 
 #### Simplify and identify
 
@@ -39,18 +47,174 @@ A database is a collection of **related** and **logically coherent** data, built
 
 A university database for maintaining information about students, courses, and grades. <font color="blue">Each</font> <font color="green">student</font> is <font color="red">referred</font> by their <font color="purple">name</font>, unique <font color="purple">number</font>, <font color="purple">class</font> and <font color="purple">major</font>. <font color="blue">Each</font> <font color="green">course</font> <font color="red">has</font> a <font color="purple">name</font>, a unique <font color="purple">code</font>, the <font color="purple">number of credits or hours</font>, and the <font color="purple">department</font> to which it belongs. <font color="blue">Some</font> <font color="green">courses</font> can <font color="red">have</font> <font color="blue">another</font> course as a <font color="purple">prerequisite</font>. <font color="green">Courses</font> are <font color="red">offered</font> within <font color="green">sections</font>, and <font color="blue">each</font> section <font color="red">contains</font> a <font color="purple">number</font>, the <font color="purple">course number</font>, the <font color="purple">semester</font>, the <font color="purple">year</font> and the <font color="purple">instructor’s name</font>. The <font color="green">students</font> <font color="red">receive</font> a <font color="green">grade report</font> containing <font color="blue">all</font> the <font color="purple">grades</font> they completed across sections.
 
+#### Schema diagram
+
 <img src="../images/example_schema_1.png" width=50% height=auto>
+
+Visual representation of the structure and organisation of the database. It shows how the elements relate to each other.
+
+#### Database snapshot
+
+<img src="../images/database_snapshot_1.png" width=50% height=auto>
+
+A static image of the database at a given point in time, capturing the state of the data (or instances).
+
+:::callout-note
+
+You cannot have a database table that is does not have at least one foreign key to connect it to the other tables.
+The foreign keys should come from the miniworld description.
+
+:::
 
 ## Database management systems
 
 ### What is a DBMS?
 
+The DBMS is a _general-purpose software system_ that facilitates the processes of defining, constructing, manipulating, and sharing databases among users and applications.
+
+To qualify as a database system, the software must be able to:
+
+- Find (**<font color="blue">retrieve</font>**) data.
+- Add (**<font color="blue">insert</font>**) new data.
+- **<font color="blue">Delete</font>** unwanted data.
+- Change (**<font color="blue">update</font>**) data.
+
+```{mermaid}
+flowchart LR
+  A[Users/Programmers] --> B[Application\nPrograms/Queries]
+  B --> C[Software to process\nQueries/Programs]
+  C --> D[Software to access\nstored data]
+  D --> E[Stored database\ndefinition - metadata]
+  D --> F[Stored database]
+
+  subgraph DBMS
+    C
+    D
+  end
+
+  subgraph Database[Database System]
+    B
+    DBMS
+    E
+    F
+  end
+
+  %% Applying style changes for background color
+  style DBMS fill:#e0e0e0,stroke:#000,stroke-width:2px
+  style Database fill:#e0e0e0,stroke:#000,stroke-width:2px
+```
+
 ### Characteristics of a DBMS
+
+#### Metadata
+
+A complete definition (or description) of the database structure and constraints.
+
+The metadata is used by the DBMS software and the users to obtain information about the database structure.
+
+NoSQL databases do not need to rely on metadata: they can use self-described data (data item + data values).
+
+<img src="../images/metadata_1.png" width=50% height=auto>
+
+#### Program-data independence and data abstraction
+
+A DBMS provides users with a conceptual representation of data that does not include details on how the data is stored or how the operations are implemented.
+
+Changes in the structure of the database do not affect the applications that use it.
+
+#### Mutliple views of the data
+
+A view may be a subset of the database and can contain virtual data that is derived from the database files but is not explicitly stored.
+
+If a view is accessed frequently by multiple users, it can be stored as a virtual table.
+
+--> views image
+
+#### Multiuser transaction processing and data sharing
+
+A multiuser DBMS must allow multiple users to access the database at the same time.
+
+The DBMS must include concurrency control routines to ensure that several users trying to update the same data do so in a controlled manner => support for online transaction processing (OLTP).
+
+The concept of a transaction is a key element for ensuring ACID properties.
+
+| Atomicity | Consistency | Isolation | Durability |
+|-----------|-------------|-----------|------------|
+| Transactions are all or nothing. | Only valid data is saved. | Transactions do not affect each other. | Written data will not be lost. |
 
 ### Database Actors
 
+#### Database steward/curator
+
+- Administering the organisation's data.
+- Applying policies and standards.
+- Ensuring data quality.
+
+#### Database administrator (DBA)
+
+- Managing the database and DBMS.
+- Authorising access.
+- Monitoring and coordinating the use.
+- Acquiring software and hardware.
+- Ensuring security and performance.
+
+#### Database designers
+
+- Identifying data to be stored.
+- Defining data structures.
+- Eliciting requisites with database users.
+- Designing the database, including views.
+
+#### Database users
+
+Accessing the database for querying, updating and generating reports.
+
+They can be:
+
+- Casual end users: high-level query interface.
+- Parametric end users: frequent use of standard types of queries and updates (e.g., mobile banking).
+- Sophisticated end users: familiarise themselves with DBMS facilities to design complex applications (e.g. engineers).
+
 ### Three-Schema Architecture
+
+Three-schema architecture aims to separate user applications from the physical database.
+
+Schemas can be defined at three levels:
+
+- External view: uses a set of external schemas to describe part of the database that a specific group of users is interested in. Representational data models can be used to implement external views.
+- Conceptual schema: describes entities, data types, relationships, user operations and constraints. A representational data model is used to describe the conceptual schema for a community of users.
+- Internal schema: physical data model describing details of data storage and access paths for the database.
+
+**Mappings** are used to transform requests and results between levels.
+
+Data independence: the capacity to change the schema at one level of the database system without having to change the schema at the next higher level.
+
+It can be **logical** (changes in the conceptual schema do not affect external views or applications) or **physical** (changes in the internal schema do not affect the conceptual schema).
+
+<img src="../images/three_schema_1.png" width=100% height=auto>
 
 ### Modules and interactions
 
+**Data definition language (DDL)**: used by the database administrator to define the database structure and schema. (Example: CREATE TABLE)
+
+**Data manipulation language (DML)**: used by database users to query and update the database. It can be interactive such as through a terminal or embedded in a python script for example. (Example: SELECT)
+
 ### Architecture of a DBMS
+
+#### Centralised architecture
+
+DBMS software is installed on a single computer (e.g. mainframes), which acts as the server. Users access the server through terminals or workstations. (ATM machines, for example).
+
+--> imgae here
+
+#### Client-server architecture
+
+With 2 tier architecture, the application runs on the client machine and the DBMS and data are on the server machine.
+
+With 3 to n tier architecture, there are intermediary layers between the client and the server such as those that authorise access and manage transactions, etc.
+
+#### Distributed architecture
+
+With distributed architecture, the database is distributed across multiple machines. These machines serve a part of the database while being a client to the other machines that serve a different part of the database.
+
+Most NoSQL databases and cloud databases are distributed.

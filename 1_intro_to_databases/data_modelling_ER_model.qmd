@@ -10,9 +10,38 @@ self-contained: true
 
 # Conceptual data modelling using the Entity-Relationship (E-R) model
 
+:::{.callout-important title="Queries"}
+
+- What is a cardinality ratio?
+
+:::
+
 ## Conceptual modelling
 
+Conceptual modelling referes to the **conceptual database design**, usually expressed through a conceptual model (with high abstraction) or an Entity-Relationship (E-R) model.
+
+E-R models are largely supported by database design tools.
+An E-R model comprises data structures (entities), their relationships, and constraints, and is represented through an E-R diagram.
+
+::: callout-tip
+It is important to note that the term database application usually refers to a particular database and the associated programs that implement the database queries and updates. Traditionally, the design and test of application programs have been considered part of software engineering rather than database design, but they can be intertwined as they are strongly related.
+:::
+
 ## Main phases of database design
+
+<img src="../images/database_design_phases_1.png" width=80% height=auto>
+
+- **Requirements collection and analysis**: database designers interview users to understand and document their data requirements from a mini world scenario.
+
+- **Functional analysis**: the functional requirements refer to user-defined operations (or transactions) that will be applied to the database, including retrievals and updates.
+
+- **Conceptual design**: high-level conceptual schema describing data requirements, entity types, relationships and constraints. No implementation details.
+
+- **Logical design**: implementation of the database using a commercial DBMS. Mapping from the conceptual schema to an implementation data model, such as the relational SQL model.
+
+- **Physical design**: specification of internal structures, file organizations, indexes, access paths, and physical design parameters.
+
+- **Application programs**: they are designed in parallel to the database design, based on high-level transaction specifications.
 
 ## Notation for conceptual diagrams
 
