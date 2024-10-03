@@ -10,12 +10,6 @@ self-contained: true
 
 # Conceptual data modelling using the Entity-Relationship (E-R) model
 
-:::{.callout-important title="Queries"}
-
-- What is a cardinality ratio?
-
-:::
-
 ## Conceptual modelling
 
 Conceptual modelling referes to the **conceptual database design**, usually expressed through a conceptual model (with high abstraction) or an Entity-Relationship (E-R) model.
@@ -93,32 +87,141 @@ Multivalued attributes (also referred to as “categorical attributes”) can ha
 
 ### Stored vs derived attributes
 
-## Null values
+A derived attribute relates to an attribute that is related (or derived) from another attribute. For instance, the value of Age can be determined from the current (today’s) date and the Date_of_birth of a given person. In this case, Date_of_birth is called the stored attribute.
 
-## Complex attributes
+Some attribute values can be derived from related entities. For instance, the attribute Number_of_employees can be determined by counting the number of employees who work for a given department.
+
+### Null values
+
+Null values are used to represent missing or unknown information. They are used when the value of an attribute is unknown or inapplicable for a particular entity. For example, the apartment number for a house address is not applicable.
+
+It is possible to specify whether an attribute can have a null value or not.
+
+### Complex attributes
+
+In general, composite and multivalued attributes can be nested arbitrarily. We can represent arbitrary nesting by grouping components of a composite attribute between parentheses () and separating the components with commas; and displaying multivalued attributes between braces []. These are called complex attributes.
 
 ## Entity types and entity sets
 
+An entity type defines a collection (or set) of entities that have the same attributes. For instance, a company employing hundreds of employees stores similar information about each of the employees. Each entity type describes the schema (or intension) for a set of entities.
+
+The entity set refers to all entities of a particular entity type at any point in time. They are the extension of that entity type.
+
+```{mermaid}
+
+flowchart LR
+
+  A --> EES
+  B --> CES
+
+  subgraph ET[Entity types]
+    A[EMPLOYEE:\nname, age, salary]
+    B[COMPANY:\nname, HQ, president]
+  end
+
+  subgraph EES[Employee entity set]
+    C[John Smith, 55, 80K]
+    D[Fred Brown, 30, 60K]
+    E[Judy Clark, 45, 70K]
+  end
+
+  subgraph CES[Company entity set]
+    F[Sunco Oil, Houston, John Smith]
+    G[Exxon, Dallas, Fred Brown]
+    H[Shell, London, Judy Clark]
+  end
+
+  subgraph ES[Entity sets]
+    EES
+    CES
+  end
+
+%% Applying style changes for background color
+style ET fill:#e0e0e0,stroke:#000,stroke-width:2px
+style ES fill:#e0e0e0,stroke:#000,stroke-width:2px
+style EES fill:#e0e0e0,stroke:#000,stroke-width:2px
+style CES fill:#e0e0e0,stroke:#000,stroke-width:2px
+```
+
 ## Representation and key attributes of an entity type
+
+Entity types are represented by a rectangular box enclosing the entity type name. Attribute names are enclosed in ovals and connected to the entity type by a line. Multivalued attributes are represented by double ovals.
+
+Key attributes are underlined and this is to represent enforcing the uniqueness constraint on the attribute.
+
+<center><img src="../images/1_key_attributes.png" width= 50% height=auto></center>
 
 ## Value sets (domains) of attributes
 
+Each simple attribute of an entity type is associated with a value set (or domain of values), which specifies the set of values that may be assigned to that attribute for each entity.
+
+Value sets are not typically displayed in E-R diagrams and are similar to basic data types available in programming languages, such as integer, float, Boolean, string, date, time etc.
+
 ## Relationship types and sets
 
+When an attribute from one entity type refers to another entity type, it is called a relationship.
+
+For example, the attribute DEPARTMENT.manager refers to an EMPLOYEE that manages the department. In the E-R model, these references should be represented as relationships not attributes.
+
 ## Relationship degree
+
+The degree of a relationship type is the number of participating entity types. A relationship type that involves two entity types is called a binary relationship type. A relationship type that involves three entity types is called a ternary relationship type, and so on.
 
 ## Relationships as attributes
 
 ## Role names and recursive relationships
 
+The role name represents the role that a participating entity from an entity type plays in each relationship instance (and it helps to explain the meaning).
+
+This is particularly useful when representing recursive relationships (or self-referencing relationships), as both entities will be of same entity type, and we need to clearly distinguish their roles in the relationship.
+
+<center><img src="../images/1_recursive_attributes.png" width= 50% height=auto></center>
+
+> A recursive relationship SUPERVISION between EMPLOYEE in the supervisory role (1) and EMPLOYEE in the subordinate role (2).
+
 ## Cardinality ratios for binary relationships
+
+The cardinality ratio of a binary relationship specifies the maximum number of relationship instances that an entity can participate in.
+
+This can usually be:
+
+- One-to-one (1:1)
+- One-to-many (1:N or 1:*)
+- Many-to-many (M:N)
 
 ## Participation constraints and existence dependencies
 
+The participation constraint specifies whether the existence of an entity depends on whether it is related to another entity via the relationship type.
+
+It is called the **minimum cardinality constraint**: the minimum number of relationship instances that each entity can participate in.
+
+There are two types:
+
+- **Total participation** (existence dependency): each entity in the entity set must participate in at least one relationship instance in the relationship set.
+  - For example, a company policy states that each employee must work for a department so an employee only exists if there is a WORKS_FOR relationship.
+- **Partial participation**: some entities may not participate in any relationship instance.
+  - Every department must have a manager but not every employee is a manager.
+
 ## Attributes of relationship types
+
+Relationship types can also have attributes, similar to those of entity types. For instance, an attribute Hours in the WORKS_ON relationship to record the number of hours per week that an employee works on a project.
+
+::: callout-important
+- Attributes of 1:1 relationships can be migrated to one of the participating entities. For instance, Start_date can be an attribute of either EMPLOYEE (manager) or DEPARTMENT.
+
+- For a 1:N relationship, a relationship attribute can be migrated only to the entity type of the N side.
+
+- For an M:N relationship, some attributes may be determined by the combination of participating entities instead of a single entity. Such attributes must be specified as relationship attributes. For instance, the number of hours per week an employee currently works on a project is determined by an EMPLOYEE-PROJECT combination and not separately by either entity.
+:::
 
 ## Weak entity types
 
+Entity types that do not have key attributes of their own are called weak entity types. Weak entity types are identified by their relationship with another entity type, called the identifying or owner entity type. This is called an **identifying relationship**.
+
+A weak entity type normally has a partial key which is the attribute that can uniquely identify weak entities that are related to the same owner entity.
+
 ## (min, max) notation for conceptual diagrams
 
-## Higher degree (>2) relationships
+The (min,max)notation is used to specify structural constraints on relationships, replacing the cardinality ratio (1:1,1:N,N:M) and single/double lines for participation constraints.
+
+This notation involves associating a pair of integer numbers (min,max) with each participation of an entity type E in a relationship R, with 0 ≤ min < max and max ≥ 1. The numbers mean that for each entity e in E, e must participate in at least min and at most max relationship instances in R at any point in time.
