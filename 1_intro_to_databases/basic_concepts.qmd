@@ -5,13 +5,6 @@ date: 1 October 2024
 format:
   html:
     page-layout: full
-  pdf:
-    page-layout: single
-    toc: true
-    number-sections: true
-    number-offset: 1
-    toc-depth: 3
-    highlight: pygments
 self-contained: true
 ---
 
@@ -143,6 +136,7 @@ If a view is accessed frequently by multiple users, it can be stored as a virtua
 A multiuser DBMS must allow multiple users to access the database at the same time.
 
 The DBMS must include concurrency control routines to ensure that several users trying to update the same data do so in a controlled manner.
+
 &rdca; Support for online transaction processing (OLTP).
 
 The concept of a transaction is a key element for ensuring ACID properties.
