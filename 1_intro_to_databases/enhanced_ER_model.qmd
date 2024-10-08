@@ -8,4 +8,34 @@ format:
 self-contained: true
 ---
 
-# Enhanced Entity-Relationship (EE-R) mode
+# Enhanced Entity-Relationship (EE-R) model
+
+The Entity-Relationship (ER) model is usually sufficient to represent most database schemas for traditional database applications. The Enhanced Entity-Relationship (EE-R) model allows for the design of more accurate database schemas reflecting data properties and constraints more precisely.
+
+## Subclasses, Superclasses, and Inheritance
+
+The name of an entity type is used both to represent the type of entity and the set of entities of that type.
+
+In many cases, an entity type has subgroupings (or subtypes) of its entities that are meaningful and need to be explicitly represented. For instance, an EMPLOYEE can be a SECRETARY, ENGINEER, TECHNICIAN, MANAGER, and so on. In this example, the EMPLOYEE entity type is the superclass, and the other entity types are subclasses of EMPLOYEE. **A subclass cannot be alone in the database and must be a member of a superclass.**
+
+Superclasses provide the basic set of common attributes while subclasses extend the basic set of attributes with the specific attributes that are unique to each subclass.
+
+The type of an entity is defined by the attributes it possesses and the relationships in which it participates. **Type inheritance** refers to the fact that a subclass inherits all the attributes and relationships in which the superclass participates. This means that a subclass should possess values for its specific attributes as well as values of its attributes as a member of the superclass.
+
+## Specialisation and Generalisation
+
+**Specialisation** is the process of defining a set of subclasses of an entity type (the superclass of the specialisation). The set of subclasses that forms a specialisation is defined on the basis of some distinguishing characteristics of the entities in the superclass. Subclasses can have specific (or local) attributes and participate in specific relationship types, apart from those inherited from the superclass.
+
+**Generalisation** can be viewed as a reverse process of abstraction in which we suppress the differences among several entity types, identify their common features, and generalise them into a single superclass.
+
+### Constraints on Specialisation and Generalisation
+
+We can determine exactly the entities that will become members of each subclass by placing a condition on the value of some attribute of the superclass. Such subclasses are called predicate-defined (or condition-defined) subclasses.
+
+A disjointness constraint specifies that the subclasses of a specialisation must be disjoint sets – an entity can be a member of at most one of the subclasses.
+
+If the subclasses are not constrained to be disjoint, their entities may be overlapping – the same real-world entity may be a member of more than one subclass.
+
+## Union Types
+
+A union type (or category) represents a collection of entities from different entity types.
