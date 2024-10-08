@@ -12,6 +12,8 @@ self-contained: true
 
 The Entity-Relationship (ER) model is usually sufficient to represent most database schemas for traditional database applications. The Enhanced Entity-Relationship (EE-R) model allows for the design of more accurate database schemas reflecting data properties and constraints more precisely.
 
+<center><img src="../images/1_COMPANY.svg"></center>
+
 ## Subclasses, Superclasses, and Inheritance
 
 The name of an entity type is used both to represent the type of entity and the set of entities of that type.
