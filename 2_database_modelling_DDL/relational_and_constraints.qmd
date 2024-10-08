@@ -1,0 +1,9 @@
+---
+title: "Database Modelling and DDL"
+author: "Oliver Gregory"
+date: 1 October 2024
+format: 
+  html:
+    page-layout: full
+self-contained: true
+---

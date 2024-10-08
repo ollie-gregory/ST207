@@ -1,0 +1,51 @@
+---
+title: "Database Modelling and DDL"
+author: "Oliver Gregory"
+date: 1 October 2024
+format: 
+  html:
+    page-layout: full
+self-contained: true
+---
+
+# ER/EER to Relational Model
+
+The logical design (or data model mapping) corresponds to a set of procedures used to create a relational schema from an entity-relationship (E-R) or an enhanced E-R (EE-R) schema.
+
+Many computer-aided software engineering (CASE) tools are based on E-R and EE-R models. These models are used to develop the schema graphically and collect information about data types and constraints. Then, they are converted automatically into a relational database schema in the DDL of the specific DBMS.
+
+## Algorithm for mapping E-R and EE-R schemas to relational schemas
+
+<center>
+```{mermaid}
+flowchart TD
+    A["Mapping of Regular Entity Types"] --> B["Mapping of Weak Entity Types"]
+    B --> C["Mapping of Binary 1:1 Relation Types"]
+    C --> D["Mapping of Binary 1:N Relationship Types"]
+    D --> E["Mapping of Binary M:N Relationship Types"]
+    E --> F["Mapping of Multivalued attributes"]
+    F --> G["Mapping of N-ary Relationship Types"]
+    G -.-> H["Options for Mapping Specialization or Generalization"]
+    H -.-> I["Mapping of Union Types (Categories)"]
+```
+</center>
+
+### 1. Mapping of Regular Entity Types
+
+
+
+### 2. Mapping of Weak Entity Types
+
+### 3. Mapping of Binary 1:1 Relation Types
+
+### 4. Mapping of Binary 1:N Relationship Types
+
+### 5. Mapping of Binary M:N Relationship Types
+
+### 6. Mapping of Multivalued attributes
+
+### 7. Mapping of N-ary Relationship Types
+
+### 8. Options for Mapping Specialization or Generalization
+
+### 9. Mapping of Union Types (Categories)
