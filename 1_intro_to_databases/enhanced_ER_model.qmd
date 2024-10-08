@@ -24,11 +24,15 @@ Superclasses provide the basic set of common attributes while subclasses extend 
 
 The type of an entity is defined by the attributes it possesses and the relationships in which it participates. **Type inheritance** refers to the fact that a subclass inherits all the attributes and relationships in which the superclass participates. This means that a subclass should possess values for its specific attributes as well as values of its attributes as a member of the superclass.
 
+<center><img src="../images/1_subclasses.svg"></center>
+
 ## Specialisation and Generalisation
 
 **Specialisation** is the process of defining a set of subclasses of an entity type (the superclass of the specialisation). The set of subclasses that forms a specialisation is defined on the basis of some distinguishing characteristics of the entities in the superclass. Subclasses can have specific (or local) attributes and participate in specific relationship types, apart from those inherited from the superclass.
 
 **Generalisation** can be viewed as a reverse process of abstraction in which we suppress the differences among several entity types, identify their common features, and generalise them into a single superclass.
+
+<center><img src="../images/1_generalisation.svg"></center>
 
 ### Constraints on Specialisation and Generalisation
 
