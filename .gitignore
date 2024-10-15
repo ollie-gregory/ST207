@@ -1,6 +1,8 @@
 # Mac stuff
 .DS_Store
 
+./3_SQL_programming/W3_CompanyDB/*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

@@ -1,0 +1,93 @@
+---
+title: "SQL Programming"
+author: "Oliver Gregory"
+date: 1 October 2024
+format: 
+  html:
+    page-layout: full
+self-contained: true
+---
+
+# Data Manipulation Language
+
+## `SELECT` Statement
+
+The `SELECT` statement is used to query the database and retrieve data. The basic syntax is as follows:
+
+```sql
+SELECT <attribute list>
+FROM <table name>
+WHERE <condition>;
+```
+
+- `<attribute list>` is a comma-separated list of attributes to retrieve.
+- `<table name>` is the name of the table from which to retrieve data.
+- `<condition>` is an optional condition that filters the rows to be retrieved.
+
+### Example
+
+```sql
+SELECT Bdate, Address
+FROM employee
+WHERE Fname='John' AND Minit='B' AND Lname='Smith';
+```
+
+In this example, we are retrieving the `Bdate` and `Address` attributes from the `employee` table for the employee with the name "John B Smith".
+
+### Order of execution
+
+1. `FROM`/`JOIN` clause
+2. `WHERE` clause
+3. `GROUP BY` clause
+4. `HAVING` clause
+5. `SELECT` clause
+6. `DISTINCT` clause
+7. `ORDER BY` clause
+8. `LIMIT` clause
+
+### What to do about ambiguous column names?
+
+The same name can be used for multiple attributes as long as those attributes are from different tables. If the same name is used for attributes from different tables, the table name should be prefixed to the attribute name to avoid ambiguity.
+
+```sql
+SELECT employee.Fname, department.Fname
+FROM employee, department;
+```
+
+### Aliases
+
+Aliases can be used to assign temporary names to attributes or tables in a query. This can be useful for readability or to avoid ambiguity when referencing the same relation multiple times in a query.
+
+```sql
+SELECT	E.Fname, E.Lname, S.Fname, S.Lname
+ 	FROM	EMPLOYEE AS E, EMPLOYEE AS S
+	WHERE	E.Super_ssn=S.Ssn;
+```
+
+In this query, we use aliases `E` and `S` for the ``EMPLOYEE` table to represent an employee and their supervisor, respectively. The query matches each employee’s `Super_ssn` (the supervisor’s Social Security Number) with the `Ssn` (Social Security Number) of another employee acting as the supervisor. It then retrieves the first and last names of both the employee (from E) and their supervisor (from S).
+
+### Unspecified `WHERE` clause
+
+If the `WHERE` clause is not specified, all tuples of the relation specified in the `FROM` clause are retrieved.
+
+:::callout-tip
+A SQL tuple is a single row of a table, and a SQL relation is a table.
+:::
+
+### `SELECT *`
+
+The `SELECT *` statement retrieves all attributes of the relation specified in the `FROM` clause.
+
+### Tables as sets
+
+### Substring pattern matching
+
+### Arithmetic operations
+
+### `ORDER BY` clause
+
+## `INSERT` Statement
+
+## `UPDATE` Statement
+
+## `DELETE` Statement

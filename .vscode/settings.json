@@ -1,0 +1,10 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "ST207 Week 3",
+            "database": "${workspaceFolder:ST207}/3_SQL_programming/W3_CompanyDB/Company.db"
+        }
+    ]
+}
